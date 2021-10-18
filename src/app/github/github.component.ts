@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RepoRequestService } from '../repo-http/repo-request.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RepoComponent } from '../repo/repo.component';
 @Component({
   selector: 'app-github',
   templateUrl: './github.component.html',
@@ -10,7 +12,7 @@ export class GithubComponent implements OnInit {
   gituser:any;
   gitRepos:any;
   getUsername(){
-    this.service.getUser(this.username).subscribe(details=>{
+    this.service.getuser(this.username).subscribe(details=>{
       console.log(details);
       return this.gituser = details;
     });
@@ -23,7 +25,7 @@ export class GithubComponent implements OnInit {
     });
   }
 
-  constructor(private service:GithubserviceService, private aron:RepoService) {
+  constructor(private service:RepoRequestService, private aron:RepoRequestService) {
     
    }
 
